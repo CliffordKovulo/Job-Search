@@ -1,0 +1,406 @@
+
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    padding: 20px;
+    color: white;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav li {
+    margin-right: 20px;
+}
+
+nav li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+
+
+.register-button {
+    background-color: #ff5722;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-left: 450%;
+    transition: background-color 0.3s ease; /* Smooth transition */
+    transition-delay: 0.1s;
+}
+
+.register-button:hover{
+    background-color: #ce6342;
+}
+
+main {
+    padding: 20px;
+}
+
+.hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('./images/homeageimage.webp');
+    image-rendering: -webkit-optimize-contrast;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: black; /* Fallback in case image doesn't load */
+    padding: 40px;
+    position: relative; /* To position overlay on top */
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* 50% black opacity */
+    z-index: 1; /* Place the overlay behind the content */
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2; 
+    color: white;
+    text-align: center;
+}
+
+
+.hero-content h2 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+
+.submit{
+    background-color: #ff5722;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth transition */
+    transition-delay: 0.1s;
+}
+
+.search img{
+    height: 50px;
+    padding-top:40px;
+    cursor: pointer;
+}
+
+.search{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.submit:hover{
+    background-color: #ce6342;
+}
+
+.job-categories {
+    text-align: center;
+    padding: 40px;
+}
+
+/* Job filter Buttons style */
+.jobs{
+    border: none;
+    border-radius: 20px;
+    padding: 10px;
+    background-color: rgb(42, 202, 202);
+    padding-left: 20px;
+    padding-right: 20px;
+    cursor: pointer;
+    color: white;
+    transition: background-color 0.3s ease; /* Smooth transition */
+    transition-delay: 0.1s;
+}
+
+.jobs:hover{
+    background-color: rgb(51, 173, 173);
+}
+
+/* the Search Button */
+.search-filter{
+    border: none;
+    border-radius: 20px;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: rgb(55, 172, 55);
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth transition */
+    transition-delay: 0.1s;
+}
+
+.search-filter:hover{
+    background-color: green;
+}
+
+/* div class with the filter buttons for jobs and the head Job Categories */
+.description{
+    background-color: rgb(231, 229, 229);
+    margin-top: 0%;
+    padding: 20px;
+}
+
+.description h2{
+    color: black;
+    margin-bottom: 0%;
+}
+
+/* section with the jobs categories and their styles */
+.job-categories{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    height: 100%;
+    padding: 20px;
+}
+
+.align-items{
+    display: flex;
+    margin: 20px;
+}
+
+.category {
+    margin: 0 20px;
+    text-align: center;
+    padding: 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.category:hover{
+    background-color: rgb(244, 240, 240);
+}
+
+.category img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+}
+
+.all-categories{
+    background-color: rgb(231, 229, 229);
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+/* Styling for the button of showing all categories of jobs available */
+.all-categories button{
+    background-color: rgb(0, 44, 85);
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth transition */
+    transition-delay: 0.1s;
+}
+
+.all-categories button:hover{
+    background-color: rgb(47, 80, 110);;
+}
+
+.why-us {
+    position: relative;
+    background-image: url('./images/hand shake.webp');
+    image-rendering: -webkit-optimize-contrast;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px;
+    z-index: 1; /* Ensure content is above the background */
+}
+
+.why-us::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.5); /* White with 50% opacity */
+    z-index: -1; /* Keep the overlay behind the content */
+}
+
+
+.quick-access{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 100px;
+    margin-top: 50px;
+}
+
+.category1 {    
+    background-color: white;
+    height: 200px;
+    width: 200px;
+    margin: 0 20px;
+    text-align: center;
+    padding: 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.category1:hover{
+    background-color: rgb(244, 240, 240);
+}
+
+.featured-jobs {
+    height: 100vh;
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #1e1e1e; 
+    color: #fff;
+}
+
+.header-title{
+    margin-top: 10%;
+}
+
+.featured-jobs-card {
+    margin-top: 5%;
+    display: flex;
+    justify-content: space-around; 
+    flex-wrap: wrap; 
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+.featured-jobs .header-title h2 {
+    font-family: 'Pacifico', cursive; /* Custom Google Font */
+    font-size: 3.5rem; /* Larger font for the heading */
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #fff; 
+}
+/* .job-card {
+    background-color: #1e1e1e;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    
+    margin: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+} */
+
+.job-card img {
+    width: 350px; 
+    height: 250px;
+    margin-bottom: 20px;
+}
+
+/* .job-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: white;
+} */
+
+.job-card p {
+    font-size: 1rem;
+    color: #ff5722; 
+    margin-bottom: 20px;
+}
+
+.job-card button {
+    background-color: transparent;
+    border: 2px solid #ff5722;
+    color: #ff5722;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.job-card button:hover {
+    background-color: #ff5722;
+    color: #fff;
+}
+
+
+
+footer {
+    background-color: #001223; /* Dark blue background similar to the image */
+    color: #948c8c;
+    padding: 40px 20px;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-around; /* Aligns the columns */
+    flex-wrap: wrap; /* Ensures proper layout on small screens */
+}
+
+.footer-column {
+    text-align: left; /* Align text to the left */
+    margin-bottom: 20px;
+}
+
+.footer-column h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 8px;
+    color: #948c8c; /* Light grey for list items */
+}
+
+.footer-bottom {
+    text-align: center;
+    padding: 20px 0;
+    border-top: 1px solid #444; /* Adds a subtle border at the top */
+}
+
+.footer-bottom p {
+    margin: 0;
+    color: #948c8c;
+}
