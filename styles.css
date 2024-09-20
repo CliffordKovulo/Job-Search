@@ -302,9 +302,7 @@ main {
     margin-top: 5%;
     display: flex;
     justify-content: space-around; 
-    flex-wrap: wrap; 
-    margin-left: 15%;
-    margin-right: 15%;
+    flex-wrap: wrap;
 }
 
 .featured-jobs .header-title h2 {
