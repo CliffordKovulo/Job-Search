@@ -4,60 +4,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Job Portal</title>
+    <!-- Stylesheet -->
     <link rel="stylesheet" href="styles.css">
+    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap">
-
-
 </head>
 <body>
-    <div class="hero-content">
-        <section class="hero">
-          
-            <div class="hero-content">
-                <div class="header">
-                    <nav>
-                        <ul>
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">Find Jobs</a></li>
-                            <li><a href="#">Pricing</a></li>
-                            <li><a href="#">Companies</a></li>
-                            <li><a href="#">Blog</a></li>
-                            <li><a href="#">Contact</a></li>
-                        </ul>
-           
-                    </nav>
-                    <div class="button">
-                        <button class="register-button">Register</button>
+    <section class="hero">
+        <div class="hero-content">
+            <div class="header">
+                <nav>
+                    <div class="hamburger" id="hamburger">
+                        <i class="fas fa-bars"></i> <!-- Hamburger Icon -->
                     </div>
-                </div>
+                    <ul id="nav-menu">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="findjobs.html">Find Jobs</a></li>
+                        <li><a href="#">Pricing</a></li>
+                        <li><a href="#">Companies</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </nav>
+                <div class="button">
+                    <li>
+                        <a href="register.html">
+                            <button class="registerButton">Register</button>
+                        </a>
+                    </li>
                     
-                <main>
+                    <!-- Logout button, hidden by default -->
+                    <button id="logoutButton" class="logout-button" style="display: none;">Logout</button>
+                </div>
+            </div>
+            <main>
                 <h2>FIND YOUR DESIRED JOB</h2>
                 <div class="search">
                     <button type="submit" class="submit">Search</button>
-                <img class="down-arrow" src="./images/down-arrow.png" alt="Search">
+                    <img class="down-arrow" src="./images/down-arrow.png" alt="Search">
                 </div>
-                
-                
-            </div>
-        </section>
-
-        <div class="description">
-            <div class="filter">
-                <button class="jobs">Job title</button>
-                <button class="jobs">Job Category</button>
-                <button class="jobs">Job Location</button>
-                <button class="search-filter">Search</button>
-            </div>
-            <h2>Job Categories</h2>
+            </main>
         </div>
+    </section>
 
+    <div class="description">
+        <div class="filter">
+            <button class="jobs">Job title</button>
+            <button class="jobs">Job Category</button>
+            <button class="jobs">Job Location</button>
+            <button class="search-filter">Search</button>
+        </div>
+        <h2>Job Categories</h2>
     </div>
-   
-       
 
     <section class="job-categories">
+        <!-- Job categories content remains the same -->
         <div class="align-items">
             <div class="category">
                 <i class="fas fa-balance-scale"></i> <!-- Accounting icon -->
@@ -75,7 +78,6 @@
                 <p>4 open positions</p>
             </div>
         </div>
-    
         <div class="align-items">
             <div class="category">
                 <i class="fas fa-keyboard"></i> <!-- Data Entry icon -->
@@ -93,7 +95,6 @@
                 <p>1 open position</p>
             </div>
         </div>
-    
         <div class="align-items">
             <div class="category">
                 <i class="fas fa-hospital"></i> <!-- Medical icon -->
@@ -106,59 +107,57 @@
                 <p>9 open positions</p>
             </div>
             <div class="category">
-                <i class="fas fa-store"></i> <!-- Camerical icon (Commercial) -->
-                <h3>Camerical</h3> <!-- Changed to Camerical as per the image -->
+                <i class="fas fa-store"></i> <!-- Commercial icon -->
+                <h3>Commercial</h3>
                 <p>5 open positions</p>
             </div>
         </div>
-        
     </section>
+
     <div class="all-categories">
         <button>See All Categories</button>
     </div>
+
     <div class="why-us">
-        <h2 style="color: rgb(0, 44, 85);">Why Choose us</h2>
-        <p style="color: rgb(0, 44, 85);">Our Method to help you build your career</p>
+        <h2 style="color: rgb(0, 44, 85);">Why Choose Us</h2>
+        <p style="color: rgb(0, 44, 85);">Our method to help you build your career</p>
         <div class="quick-access">
             <div class="category1">
                 <i class="fas fa-paper-plane"></i> <!-- Quick Apply icon -->
                 <h3>Quick Apply</h3>
-                <p>By Just Creating Account</p>
+                <p>By just creating an account</p>
             </div>
             <div class="category1">
                 <i class="fas fa-search"></i> <!-- Search Tools icon -->
                 <h3>Search Tools</h3>
-                <p>Advanced Search Tools for Job Seekers</p>
+                <p>Advanced search tools for job seekers</p>
             </div>
             <div class="category1">
                 <i class="fas fa-star"></i> <!-- Best Companies icon -->
                 <h3>Best Companies</h3>
-                <p>Worldwide Companies</p>
+                <p>Worldwide companies</p>
             </div>
         </div>
     </div>
-    
+
     <div class="featured-jobs">
         <div class="header-title">
             <h2>Featured Jobs</h2>
-            <p>Find The Awesome Job That Matches Your Skills</p>
+            <p>Find the awesome job that matches your skills</p>
         </div>
-        
         <div class="featured-jobs-card">
             <div class="job-card">
-                <img src="./images/javascript-logo.webp" alt="JavaScript Logo"> 
+                <img src="./images/javascript-logo.webp" alt="JavaScript Logo">
                 <h3>JavaScript Developer</h3>
                 <p>USA</p>
                 <button>View All Items</button>
             </div>
-            
             <div class="job-card">
-                <img src="./images/javascript-logo.webp" alt="JavaScript Logo"> 
+                <img src="./images/javascript-logo.webp" alt="JavaScript Logo">
                 <h3>JavaScript Developer</h3>
                 <p>Denmark</p>
                 <button>View All Items</button>
             </div>
-            
             <div class="job-card">
                 <img src="./images/javascript-logo.webp" alt="JavaScript Logo">
                 <h3>JavaScript Developer</h3>
@@ -167,8 +166,7 @@
             </div>
         </div>
     </div>
-    
-    </main>
+
     <footer>
         <div class="footer-container">
             <div class="footer-column">
@@ -203,6 +201,8 @@
             <p>&copy; 2023 Job Portal</p>
         </div>
     </footer>
-    
+
+    <!-- Include scripts at the end of the body -->
+    <script src="scripts.js"></script>
 </body>
 </html>

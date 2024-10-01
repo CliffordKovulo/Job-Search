@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Jobs - Job Portal</title>
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <ul id="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="find-jobs.html">Find Jobs</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="companies.html">Companies</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="button">
+                <a href="register.html">
+                    <button class="registerButton">Register</button>
+                </a>
+                <button id="logoutButton" class="logout-button" style="display: none;">Logout</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="find-jobs-hero">
+        <div class="hero-content">
+            <h1>Find Job</h1>
+        </div>
+    </section>
+
+    <!-- Search Bar and Filters -->
+    <div class="search-and-filters">
+        <div class="filters">
+            <input type="text" placeholder="Search...">
+            <div class="filter-group">
+                <button class="filter-btn">Job Type</button>
+                <button class="filter-btn">Job Experience</button>
+                <button class="filter-btn">Job Gender</button>
+                <button class="filter-btn">Job Salary Range</button>
+                <button class="filter-btn filter-apply">Filter</button>
+            </div>
+        </div>
+
+        <!-- Job Listings -->
+        <div class="job-listings">
+            <div class="job-card">
+                <img src="./images/js-logo.png" alt="JavaScript Logo">
+                <div class="job-details">
+                    <h3>JavaScript Developer</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
+                </div>
+            </div>
+            <div class="job-card">
+                <img src="./images/aws-logo.png" alt="AWS Logo">
+                <div class="job-details">
+                    <h3>AWS Engineer</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
+                </div>
+            </div>
+            <div class="job-card">
+                <img src="./images/js-logo.png" alt="JavaScript Logo">
+                <div class="job-details">
+                    <h3>UX Designer</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-bottom">
+                <p>&copy; 2023 Job Portal</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="scripts.js"></script>
+</body>
+</html>
