@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard - Manage Jobs</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-eNf9Dv7S0xN4s/DX6jlf8ZKv4Lld8L1zL9/qW9bZQba+XT8CE+SNZxDjY0Z4Ol/x" crossorigin="anonymous">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f2f5;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 240px;
+            height: 100vh;
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        .sidebar h2 {
+            color: #e74c3c;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .sidebar a {
+            color: #bdc3c7;
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .sidebar a:hover {
+            background-color: #34495e;
+            color: #ecf0f1;
+        }
+
+        .sidebar a i {
+            margin-right: 10px;
+        }
+
+        /* Top bar */
+        .topbar {
+            margin-left: 240px;
+            height: 60px;
+            background-color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .topbar input {
+            width: 400px;
+            padding: 10px 15px;
+            border-radius: 30px;
+            border: 1px solid #ced4da;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .topbar input:focus {
+            border-color: #2c3e50;
+        }
+
+        .topbar .user-profile {
+            display: flex;
+            align-items: center;
+        }
+
+        .topbar .user-profile img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-left: 15px;
+        }
+
+        /* Main content */
+        .content {
+            margin-left: 240px;
+            padding: 40px 60px;
+        }
+
+        .content h1 {
+            font-size: 32px;
+            color: #2c3e50;
+            margin-bottom: 30px;
+        }
+
+        .add-job-btn {
+            display: inline-block;
+            margin-bottom: 30px;
+            padding: 12px 25px;
+            background-color: #27ae60;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 30px;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+
+        .add-job-btn:hover {
+            background-color: #218c53;
+        }
+
+        /* Job list container */
+        .job-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .job-item {
+            display: flex;
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .job-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .job-logo {
+            flex: 0 0 120px;
+            background-color: #ecf0f1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .job-logo img {
+            max-width: 80px;
+            max-height: 80px;
+        }
+
+        .job-details {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .job-details h3 {
+            margin: 0 0 10px;
+            font-size: 1.5rem;
+            color: #2c3e50;
+        }
+
+        .job-details p {
+            margin: 5px 0;
+            color: #7f8c8d;
+        }
+
+        .action-btns {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .action-btns button {
+            background-color: #e74c3c;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-size: 1rem;
+        }
+
+        .action-btns button:hover {
+            background-color: #c0392b;
+        }
+
+        @media (max-width: 768px) {
+            .topbar input {
+                width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2><i class="fas fa-cogs"></i> Admin Panel</h2>
+        <a href="#"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+        <a href="#"><i class="fas fa-search"></i> Search Job</a>
+        <a href="#"><i class="fas fa-briefcase"></i> Manage Jobs</a>
+        <a href="#"><i class="fas fa-user-cog"></i> Settings</a>
+    </div>
+
+    <!-- Top Bar -->
+    <div class="topbar">
+        <input type="text" placeholder="Search for jobs...">
+        <div class="user-profile">
+            <p>Admin Name</p>
+            <img src="https://via.placeholder.com/40" alt="Admin Profile">
+        </div >
+    </div>
+
+    <!-- Main Content -->
+    <div class="content">
+        <h1>Manage Jobs</h1>
+
+        <!-- Button to go to Add Job Page -->
+        <a href="add-job.html" class="add-job-btn"><i class="fas fa-plus-circle"></i> Add New Job</a>
+
+        <!-- Job List -->
+        <div id="jobList" class="job-list"></div>
+    </div>
+
+    <!-- Firebase SDK and Firebase Configuration -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.4/firebase-app.js";
+        import { getFirestore, collection, deleteDoc, doc, getDocs } from "https://www.gstatic.com/firebasejs/9.8.4/firebase-firestore.js";
+
+        // Your Firebase Configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyAK67Air...",  // Replace with your Firebase API Key
+            authDomain: "job-searching-5a91e.firebaseapp.com",
+            projectId: "job-searching-5a91e",
+            storageBucket: "job-searching-5a91e.appspot.com",
+            messagingSenderId: "69489739379",
+            appId: "1:69489739379:web:c4d92dfefee3c19006cc06"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        // Fetch and display jobs from Firestore
+        async function fetchJobs() {
+            const jobList = document.getElementById('jobList');
+            jobList.innerHTML = '';  // Clear the job list
+
+            try {
+                const querySnapshot = await getDocs(collection(db, 'jobs'));
+                if (querySnapshot.empty) {
+                    jobList.innerHTML = '<p>No jobs found.</p>';
+                    return;
+                }
+                querySnapshot.forEach((docSnap) => {
+                    const job = docSnap.data();
+                    const jobItem = `
+                        <div class="job-item" data-id="${docSnap.id}">
+                            <div class="job-logo">
+                                <img src="${job.image || 'https://via.placeholder.com/80'}" alt="${job.company} Logo">
+                            </div>
+                            <div class="job-details">
+                                <h3>${job.title}</h3>
+                                <p><strong>Company:</strong> ${job.company}</p>
+                                <p><strong>Location:</strong> ${job.location}</p>
+                                <p><strong>Description:</strong> ${job.description}</p>
+                            </div>
+                            <div class="action-btns">
+                                <button><i class="fas fa-trash-alt"></i> Delete</button>
+                            </div>
+                        </div>
+                    `;
+                    jobList.innerHTML += jobItem;
+                });
+
+                // Add event listener to delete buttons
+                const deleteButtons = document.querySelectorAll('.job-item .action-btns button');
+                deleteButtons.forEach((button) => {
+                    button.addEventListener('click', (event) => {
+                        const jobItemDiv = event.target.closest('.job-item');
+                        const jobId = jobItemDiv.getAttribute('data-id');
+                        deleteJob(jobId);
+                    });
+                });
+            } catch (error) {
+                console.error('Error fetching jobs:', error);
+                alert('Error fetching jobs: ' + error.message);
+            }
+        }
+
+        // Delete job from Firestore
+        async function deleteJob(id) {
+            if (confirm('Are you sure you want to delete this job?')) {
+                try {
+                    console.log('Attempting to delete job with ID:', id); // Log the document ID
+                    const jobDocRef = doc(db, 'jobs', id);  // Reference the document by ID
+                    await deleteDoc(jobDocRef);  // Delete the document from Firestore
+                    console.log('Job deleted successfully:', id);
+                    alert('Job deleted successfully!');
+                    fetchJobs();  // Refresh the job list after deletion
+                } catch (error) {
+                    console.error('Error deleting job with ID:', id, error);
+                    alert('Error deleting job: ' + error.message);
+                }
+            }
+        }
+
+        // Fetch jobs on page load
+        fetchJobs();
+    </script>
+</body>
+</html>

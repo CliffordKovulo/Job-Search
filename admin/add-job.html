@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Page - Add Job</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-eNf9Dv7S0xN4s/DX6jlf8ZKv4Lld8L1zL9/qW9bZQba+XT8CE+SNZxDjY0Z4Ol/x" crossorigin="anonymous">
+    <style>
+        /* Reset Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* General Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f2f5;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: #2c3e50;
+            padding-top: 20px;
+        }
+
+        /* Form Container */
+        #jobForm {
+            max-width: 700px;
+            margin: 0 auto 40px;
+            background-color: #fff;
+            padding: 40px 50px;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        #jobForm label {
+            font-size: 1rem;
+            color: #34495e;
+            margin-bottom: 8px;
+            display: block;
+            font-weight: 500;
+        }
+
+        #jobForm input,
+        #jobForm textarea,
+        #jobForm select {
+            width: 100%;
+            padding: 12px 15px;
+            font-size: 1rem;
+            margin-bottom: 20px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            outline: none;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        #jobForm input:focus,
+        #jobForm textarea:focus,
+        #jobForm select:focus {
+            border-color: #2980b9;
+            box-shadow: 0 0 0 4px rgba(41, 128, 185, 0.1);
+        }
+
+        #jobForm textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        #jobForm button {
+            width: 100%;
+            background-color: #2980b9;
+            color: #fff;
+            border: none;
+            padding: 15px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            font-weight: 600;
+        }
+
+        #jobForm button:hover {
+            background-color: #2573a6;
+        }
+
+        #message {
+            text-align: center;
+            font-size: 1rem;
+            color: green;
+            margin-top: 20px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            #jobForm {
+                padding: 30px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            #jobForm button {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1><i class="fas fa-briefcase"></i> Add New Job</h1>
+    
+    <form id="jobForm">
+        <!-- Job Title -->
+        <label for="title">Job Title</label>
+        <input type="text" id="title" name="title" placeholder="Enter the job title" required>
+
+        <!-- Company Name -->
+        <label for="company">Company Name</label>
+        <input type="text" id="company" name="company" placeholder="Enter the company name" required>
+
+        <!-- Job Location -->
+        <label for="location">Location</label>
+        <input type="text" id="location" name="location" placeholder="Enter the job location" required>
+
+        <!-- Job Type -->
+        <label for="jobType">Job Type</label>
+        <select id="jobType" name="jobType" required>
+            <option value="">Select job type</option>
+            <option value="Full-Time">Full-Time</option>
+            <option value="Part-Time">Part-Time</option>
+            <option value="Contract">Contract</option>
+        </select>
+
+        <!-- Experience Level -->
+        <label for="experience">Experience Level</label>
+        <select id="experience" name="experience" required>
+            <option value="">Select experience level</option>
+            <option value="Junior">Junior</option>
+            <option value="Mid-Level">Mid-Level</option>
+            <option value="Senior">Senior</option>
+        </select>
+
+        <!-- Gender Preference -->
+        <label for="gender">Gender Preference</label>
+        <select id="gender" name="gender" required>
+            <option value="">Select gender preference</option>
+            <option value="Any">Any</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select>
+
+        <!-- Salary Range -->
+        <label for="salary">Salary Range</label>
+        <input type="text" id="salary" name="salary" placeholder="Enter salary range" required>
+
+        <!-- Job Description -->
+        <label for="description">Job Description</label>
+        <textarea id="description" name="description" placeholder="Enter the job description" required></textarea>
+
+        <!-- Company Logo URL -->
+        <label for="image">Company Logo URL</label>
+        <input type="url" id="image" name="image" placeholder="Enter the image URL (e.g., https://)" required>
+
+        <!-- Submit Button -->
+        <button type="submit"><i class="fas fa-plus-circle"></i> Add Job</button>
+    </form>
+
+    <div id="message"></div>
+
+    <!-- Firebase SDK -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.4/firebase-app.js";
+        import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/9.8.4/firebase-firestore.js";
+
+        // Your Firebase Configuration (replace placeholders with your actual config)
+        const firebaseConfig = {
+            apiKey: "AIzaSyAK67Air...",  // Your Firebase API Key
+            authDomain: "job-searching-5a91e.firebaseapp.com",
+            projectId: "job-searching-5a91e",
+            storageBucket: "job-searching-5a91e.appspot.com",
+            messagingSenderId: "69489739379",
+            appId: "1:69489739379:web:c4d92dfefee3c19006cc06",
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        // Add job to Firestore
+        const jobForm = document.getElementById('jobForm');
+        const messageDiv = document.getElementById('message');
+
+        jobForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            // Capture form values
+            const title = document.getElementById('title').value.trim();
+            const company = document.getElementById('company').value.trim();
+            const location = document.getElementById('location').value.trim();
+            const jobType = document.getElementById('jobType').value;
+            const experience = document.getElementById('experience').value;
+            const gender = document.getElementById('gender').value;
+            const salary = document.getElementById('salary').value.trim();
+            const description = document.getElementById('description').value.trim();
+            const image = document.getElementById('image').value.trim();
+
+            try {
+                await addDoc(collection(db, 'jobs'), {
+                    title,
+                    company,
+                    location,
+                    jobType,
+                    experience,
+                    gender,
+                    salary,
+                    description,
+                    image
+                });
+                messageDiv.style.color = 'green';
+                messageDiv.innerText = 'Job added successfully!';
+                jobForm.reset();  // Reset the form
+            } catch (error) {
+                messageDiv.style.color = 'red';
+                messageDiv.innerText = 'Error adding job: ' + error.message;
+            }
+        });
+    </script>
+</body>
+</html>
