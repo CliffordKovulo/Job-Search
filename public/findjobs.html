@@ -4,12 +4,259 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Find Jobs - Job Portal</title>
-    <!-- Stylesheet -->
-    <link rel="stylesheet" href="styles.css">
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!-- Google Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f2f5;
+        }
+
+        /* Header */
+        header {
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            padding: 15px 50px;
+        }
+
+        #nav-menu {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        #nav-menu li {
+            margin-right: 20px;
+        }
+
+        #nav-menu li a {
+            color: #000;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+
+        #nav-menu li a:hover {
+            color: #e74c3c;
+        }
+
+        .button {
+            display: flex;
+        }
+
+        .registerButton, .logout-button {
+            padding: 10px 20px;
+            background-color: #e74c3c;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        .registerButton:hover, .logout-button:hover {
+            background-color: #c0392b;
+        }
+
+        /* Hero Section */
+        .find-jobs-hero {
+            background-image: url('https://example.com/warehouse-image.jpg'); /* Add your image URL */
+            background-size: cover;
+            background-position: center;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Search Bar and Filters */
+        .search-and-filters {
+            display: flex;
+            justify-content: space-between;
+            padding: 40px 100px;
+            flex-wrap: wrap;
+        }
+
+        .filters {
+            flex: 1;
+            max-width: 300px;
+            margin-right: 20px;
+        }
+
+        .filters input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .filter-btn {
+            padding: 10px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            text-align: left;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        .filter-btn:hover {
+            background-color: #2980b9;
+        }
+
+        .filter-apply {
+            background-color: #2ecc71;
+        }
+
+        .filter-apply:hover {
+            background-color: #27ae60;
+        }
+
+        /* Job Listings */
+        .job-listings {
+            flex: 3;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .job-card {
+            display: flex;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .job-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .job-card img {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            margin-right: 20px;
+        }
+
+        .job-details h3 {
+            margin: 0 0 10px;
+            font-size: 1.5rem;
+        }
+
+        .job-details p {
+            margin: 5px 0;
+            color: #7f8c8d;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 50px 100px;
+        }
+
+        footer .footer-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        footer .footer-column {
+            flex: 1;
+            margin-right: 20px;
+        }
+
+        footer h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        footer ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        footer ul li {
+            margin-bottom: 10px;
+        }
+
+        footer ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Responsiveness */
+        @media (max-width: 768px) {
+            .search-and-filters {
+                flex-direction: column;
+                padding: 20px;
+            }
+
+            .filters, .job-listings {
+                max-width: 100%;
+            }
+
+            footer {
+                padding: 30px 20px;
+            }
+
+            nav {
+                padding: 10px 20px;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            nav {
+                padding: 10px;
+            }
+
+            .filters, .job-listings {
+                margin: 0;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Header -->
@@ -42,43 +289,47 @@
     <!-- Search Bar and Filters -->
     <div class="search-and-filters">
         <div class="filters">
-            <input type="text" placeholder="Search...">
+            <input id="searchInput" type="text" placeholder="Search by job title or company...">
             <div class="filter-group">
-                <button class="filter-btn">Job Type</button>
-                <button class="filter-btn">Job Experience</button>
-                <button class="filter-btn">Job Gender</button>
-                <button class="filter-btn">Job Salary Range</button>
-                <button class="filter-btn filter-apply">Filter</button>
+                <select id="jobTypeFilter" class="filter-btn">
+                    <option value="">Job Type</option>
+                    <option value="Full-time">Full-time</option>
+                    <option value="Part-time">Part-time</option>
+                    <option value="Contract">Contract</option>
+                </select>
+
+                <select id="jobExperienceFilter" class="filter-btn">
+                    <option value="">Job Experience</option>
+                    <option value="Entry Level">Entry Level</option>
+                    <option value="Mid Level">Mid Level</option>
+                    <option value="Senior Level">Senior Level</option>
+                </select>
+
+                <select id="jobGenderFilter" class="filter-btn">
+                    <option value="">Job Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Unspecified">Unspecified</option>
+                </select>
+
+                <select id="jobSalaryFilter" class="filter-btn">
+                    <option value="">Job Salary Range</option>
+                    <option value="Below 50k">Below 50k</option>
+                    <option value="50k-100k">50k-100k</option>
+                    <option value="Above 100k">Above 100k</option>
+                </select>
+
+                <button id="applyFilters" class="filter-btn filter-apply">Apply Filters</button>
             </div>
         </div>
 
         <!-- Job Listings -->
-        <div class="job-listings">
-            <div class="job-card">
-                <img src="./images/js-logo.png" alt="JavaScript Logo">
-                <div class="job-details">
-                    <h3>JavaScript Developer</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
-                </div>
-            </div>
-            <div class="job-card">
-                <img src="./images/aws-logo.png" alt="AWS Logo">
-                <div class="job-details">
-                    <h3>AWS Engineer</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
-                </div>
-            </div>
-            <div class="job-card">
-                <img src="./images/js-logo.png" alt="JavaScript Logo">
-                <div class="job-details">
-                    <h3>UX Designer</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
-                </div>
-            </div>
+        <div class="job-listings" id="jobList">
+            <!-- Jobs will be dynamically injected here -->
         </div>
     </div>
 
-    <!-- Footer Section from Homepage -->
+    <!-- Footer Section -->
     <footer>
         <div class="footer-container">
             <div class="footer-column">
@@ -114,7 +365,105 @@
         </div>
     </footer>
 
-    <!-- Include scripts at the end of the body -->
-    <script src="scripts.js"></script>
+    <!-- Firebase SDK and Firebase Configuration -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.4/firebase-app.js";
+        import { getFirestore, collection, query, where, getDocs } from "https://www.gstatic.com/firebasejs/9.8.4/firebase-firestore.js";
+
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyAK67Air...",
+            authDomain: "job-searching-5a91e.firebaseapp.com",
+            projectId: "job-searching-5a91e",
+            storageBucket: "job-searching-5a91e.appspot.com",
+            messagingSenderId: "69489739379",
+            appId: "1:69489739379:web:c4d92dfefee3c19006cc06"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        // Fetch jobs based on filters
+        async function fetchJobs(filters = {}) {
+            const jobList = document.getElementById('jobList');
+            jobList.innerHTML = '';  // Clear the job list
+
+            try {
+                let jobQuery = collection(db, 'jobs');
+                
+                // Add filters dynamically to the query
+                const filterConditions = [];
+                
+                if (filters.jobType) {
+                    filterConditions.push(where('type', '==', filters.jobType));
+                }
+                if (filters.jobExperience) {
+                    filterConditions.push(where('experience', '==', filters.jobExperience));
+                }
+                if (filters.jobGender) {
+                    filterConditions.push(where('gender', '==', filters.jobGender));
+                }
+                if (filters.jobSalaryRange) {
+                    filterConditions.push(where('salary', '==', filters.jobSalaryRange));
+                }
+
+                if (filterConditions.length > 0) {
+                    jobQuery = query(jobQuery, ...filterConditions);
+                }
+
+                const querySnapshot = await getDocs(jobQuery);
+                
+                if (querySnapshot.empty) {
+                    jobList.innerHTML = '<p>No jobs found.</p>';
+                    return;
+                }
+                
+                querySnapshot.forEach((docSnap) => {
+                    const job = docSnap.data();
+                    const jobItem = `
+                        <div class="job-card">
+                            <img src="${job.image || './images/default-job-image.png'}" alt="${job.title} Logo">
+                            <div class="job-details">
+                                <h3>${job.title}</h3>
+                                <p><strong>Company:</strong> ${job.company}</p>
+                                <p><strong>Location:</strong> ${job.location}</p>
+                                <p>${job.description}</p>
+                            </div>
+                        </div>
+                    `;
+                    jobList.innerHTML += jobItem;
+                });
+
+            } catch (error) {
+                console.error('Error fetching jobs:', error);
+                alert('Error fetching jobs: ' + error.message);
+            }
+        }
+
+        // Function to apply filters
+        function applyFilters() {
+            const jobType = document.getElementById('jobTypeFilter').value;
+            const jobExperience = document.getElementById('jobExperienceFilter').value;
+            const jobGender = document.getElementById('jobGenderFilter').value;
+            const jobSalaryRange = document.getElementById('jobSalaryFilter').value;
+
+            const filters = {
+                jobType: jobType || null,
+                jobExperience: jobExperience || null,
+                jobGender: jobGender || null,
+                jobSalaryRange: jobSalaryRange || null,
+            };
+
+            // Fetch jobs with filters applied
+            fetchJobs(filters);
+        }
+
+        // Fetch jobs on page load
+        fetchJobs();
+
+        // Apply filters when the button is clicked
+        document.getElementById('applyFilters').addEventListener('click', applyFilters);
+    </script>
 </body>
 </html>
