@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Company Listing</title>
+    <style>
+      /* General Reset */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      /* Body and Container Styles */
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        min-height: 100vh;
+      }
+
+      .header {
+        position: relative;
+        background-image: url("./images/company.avif"); /* Add your background image here */
+        background-size: cover;
+        background-position: center;
+        height: 40vh;
+        padding: 20px;
+        text-align: center;
+        color: white;
+        overflow: hidden; /* Ensures the pseudo-element doesn't overflow */
+      }
+
+      /* Pseudo-element for the opacity overlay */
+      .header::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5); /* Adjust opacity level as needed */
+        z-index: 1;
+      }
+
+      /* Content inside the header */
+      .header h1 {
+        position: relative;
+        z-index: 2; /* Ensures the text stays above the opacity overlay */
+      }
+
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+        color: white;
+      }
+
+      .navbar a {
+        color: white;
+        text-decoration: none;
+        margin: 0 10px;
+        font-weight: bold;
+        z-index: 2;
+      }
+
+      .navbar .register-btn {
+        background-color: #e74c3c;
+        padding: 10px 15px;
+        border-radius: 5px;
+        z-index: 2;
+      }
+
+      .container {
+        display: flex;
+        max-width: 1200px;
+        margin: 20px auto;
+      }
+
+      /* Filters Section */
+      .filters {
+        width: 25%;
+        padding: 20px;
+        margin-right: 20px;
+      }
+
+      .search-box {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+
+      .filter-btn {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        background: linear-gradient(to right, #007bff, #0056b3);
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1rem;
+      }
+
+      .filter-main {
+        background-color: #007bff;
+      }
+
+      /* Company List */
+      .company-list {
+        width: 75%;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      /* Company Card */
+      .company-card {
+        display: flex;
+        background-color: white;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        align-items: center;
+        border-left: 5px solid #f9c846;
+        cursor: pointer; /* Makes it clear that the card is clickable */
+      }
+
+      .company-logo {
+        background-color: #f9c846;
+        width: 60px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        font-weight: bold;
+        border-radius: 5px;
+        margin-right: 20px;
+      }
+
+      .company-info {
+        flex: 1;
+      }
+
+      .company-title {
+        font-size: 1.25rem;
+        font-weight: bold;
+      }
+
+      .company-description {
+        margin-top: 10px;
+        color: #555;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <div class="navbar">
+        <div style="z-index: 2;">
+          <a href="index.html">Home</a>
+          <a href="findjobs.html">Find Jobs</a>
+          <a href="#">Pricing</a>
+          <a href="#">Companies</a>
+          <a href="blog.html">Blog</a>
+          <a href="#">Contact</a>
+        </div>
+        <a href="#" class="register-btn">Register</a>
+      </div>
+      <h1 style="margin-top: 8%;">Company Listing</h1>
+    </header>
+
+    <div class="container">
+      <!-- Sidebar Filters -->
+      <aside class="filters">
+        <input type="text" placeholder="Search..." class="search-box" />
+        <button class="filter-btn">Company Name</button>
+        <button class="filter-btn">Company Industry</button>
+        <button class="filter-btn">Company Location</button>
+        <button class="filter-btn">Company Size</button>
+        <button class="filter-btn filter-main">Filter</button>
+      </aside>
+
+      <!-- Company Listings -->
+      <main class="company-list">
+        <!-- These company cards will be dynamically generated -->
+      </main>
+    </div>
+
+    <script>
+      // Hardcoded companies data
+      const companies = [
+        {
+          id: 1,
+          name: "JavaScript Developer",
+          industry: "IT",
+          location: "Remote",
+          size: "Small",
+          role: "JavaScript Developer",
+          description:
+            "Develop and maintain JavaScript-based web applications and features.",
+        },
+        {
+          id: 2,
+          name: "AWS Specialist",
+          industry: "Cloud Services",
+          location: "New York",
+          size: "Medium",
+          role: "AWS Specialist",
+          description:
+            "Manage and optimize cloud infrastructure using AWS services.",
+        },
+        {
+          id: 3,
+          name: "UX Designer",
+          industry: "Design",
+          location: "San Francisco",
+          size: "Large",
+          role: "UX Designer",
+          description:
+            "Design intuitive user experiences for web and mobile applications.",
+        },
+        {
+          id: 4,
+          name: "Data Analyst",
+          industry: "Analytics",
+          location: "Boston",
+          size: "Medium",
+          role: "Data Analyst",
+          description:
+            "Analyze data sets and provide insights to guide business decisions.",
+        },
+        {
+          id: 5,
+          name: "Frontend Developer",
+          industry: "IT",
+          location: "Remote",
+          size: "Large",
+          role: "Frontend Developer",
+          description:
+            "Build responsive user interfaces using HTML, CSS, and JavaScript.",
+        },
+        {
+          id: 6,
+          name: "Project Manager",
+          industry: "Management",
+          location: "Los Angeles",
+          size: "Large",
+          role: "Project Manager",
+          description:
+            "Coordinate projects from planning through completion, ensuring timelines and budgets are met.",
+        },
+        {
+          id: 7,
+          name: "Marketing Coordinator",
+          industry: "Marketing",
+          location: "Chicago",
+          size: "Small",
+          role: "Marketing Coordinator",
+          description:
+            "Assist in developing marketing strategies and campaigns.",
+        },
+        {
+          id: 8,
+          name: "DevOps Engineer",
+          industry: "Cloud Services",
+          location: "Austin",
+          size: "Medium",
+          role: "DevOps Engineer",
+          description:
+            "Automate and manage cloud infrastructure using CI/CD pipelines.",
+        },
+        {
+          id: 9,
+          name: "HR Specialist",
+          industry: "Human Resources",
+          location: "Seattle",
+          size: "Small",
+          role: "HR Specialist",
+          description:
+            "Manage employee relations and recruitment for a growing tech firm.",
+        },
+        {
+          id: 10,
+          name: "Sales Executive",
+          industry: "Sales",
+          location: "Miami",
+          size: "Medium",
+          role: "Sales Executive",
+          description:
+            "Drive sales and develop new business opportunities within the tech industry.",
+        },
+        {
+          id: 11,
+          name: "Cybersecurity Analyst",
+          industry: "IT Security",
+          location: "Denver",
+          size: "Large",
+          role: "Cybersecurity Analyst",
+          description:
+            "Monitor and protect systems against potential security breaches.",
+        },
+        {
+          id: 12,
+          name: "Full Stack Developer",
+          industry: "IT",
+          location: "San Diego",
+          size: "Large",
+          role: "Full Stack Developer",
+          description:
+            "Develop backend services and integrate them with frontend applications.",
+        },
+        {
+          id: 13,
+          name: "SEO Specialist",
+          industry: "Marketing",
+          location: "Orlando",
+          size: "Small",
+          role: "SEO Specialist",
+          description:
+            "Optimize website content for search engines and improve online visibility.",
+        },
+        {
+          id: 14,
+          name: "Product Manager",
+          industry: "Management",
+          location: "San Francisco",
+          size: "Large",
+          role: "Product Manager",
+          description:
+            "Oversee product development and collaborate with stakeholders to align business goals.",
+        },
+      ];
+
+      // Function to render companies
+      function renderCompanies() {
+        const companyList = document.querySelector(".company-list");
+        companyList.innerHTML = ""; // Clear the list before rendering
+
+        companies.forEach((company) => {
+          const companyCard = document.createElement("div");
+          companyCard.className = "company-card";
+
+          companyCard.innerHTML = `
+                    <div class="company-logo">JS</div>
+                    <div class="company-info">
+                        <h3 class="company-title">${company.role}</h3>
+                        <p class="company-description">${company.description}</p>
+                    </div>
+                `;
+
+          // Add click event to navigate to the details page
+          companyCard.addEventListener("click", () => {
+            localStorage.setItem("selectedCompany", JSON.stringify(company));
+            window.location.href = "company-details.html";
+          });
+
+          companyList.appendChild(companyCard);
+        });
+      }
+
+      // Initialize the rendering
+      document.addEventListener("DOMContentLoaded", renderCompanies);
+    </script>
+  </body>
+</html>

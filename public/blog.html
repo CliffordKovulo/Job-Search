@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog</title>
+    <style>
+      /* Reset and global styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        color: #333;
+      }
+
+      /* Header Styling */
+      header {
+        background-color: #fff;
+        padding: 20px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        position: fixed;
+        width: 100%;
+        top: 0;
+        left: 0;
+        z-index: 10;
+      }
+
+      nav {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+      }
+
+      .nav-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        width: 100%;
+      }
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+      }
+
+      .nav-links li {
+        margin-left: 20px;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: #333;
+        font-weight: 500;
+      }
+
+      .register-btn {
+        background-color: #f44336;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        text-decoration: none;
+      }
+
+      /* Blog Banner Styling */
+      .blog-banner {
+        margin-right: 150px;
+        margin-left: 150px;
+        height: 400px;
+        margin-top: 80px; /* To prevent content hiding behind fixed header */
+        position: relative;
+      }
+
+      .blog-banner .overlay {
+        background: url("./images/blog.jpg") no-repeat center center/cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 1;
+      }
+
+      .blog-banner::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5); /* Add dark overlay */
+        z-index: 2;
+      }
+
+      .blog-banner h1 {
+        color: white;
+        font-size: 3rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        position: relative;
+        z-index: 3;
+        text-align: center; /* Center the text */
+        padding-top: 150px; /* Adjust the spacing as needed */
+      }
+
+      /* Add Blog Button Styling */
+      .add-blog-container {
+        max-width: 1000px;
+        margin: 40px auto;
+        text-align: right;
+      }
+
+      .add-blog-btn {
+        background-color: #007bff;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        font-size: 1rem;
+        cursor: pointer;
+      }
+
+      /* Blog Content Styling */
+      .blog-content {
+        max-width: 1000px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: white;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        line-height: 1.8;
+      }
+
+      .blog-content h2 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+      }
+
+      .blog-content p {
+        margin-bottom: 20px;
+        font-size: 1.1rem;
+      }
+
+      /* Footer Styling */
+      footer {
+        background-color: #333;
+        color: white;
+        padding: 40px 0;
+      }
+
+      .footer-container {
+        display: flex;
+        justify-content: space-between;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      footer h3 {
+        margin-bottom: 20px;
+      }
+
+      footer ul {
+        list-style: none;
+      }
+
+      footer ul li {
+        margin-bottom: 10px;
+      }
+
+      footer ul li a {
+        text-decoration: none;
+        color: white;
+        transition: color 0.3s ease;
+      }
+
+      footer ul li a:hover {
+        color: #f44336;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header Section -->
+    <header>
+      <nav>
+        <div class="nav-container">
+          <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="findjobs.html">Find Jobs</a></li>
+            <li><a href="#">Pricing</a></li>
+            <li><a href="companies.html">Companies</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+          <a href="#" class="register-btn">Register</a>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Blog Banner Section -->
+    <section class="blog-banner">
+      <div class="overlay"></div>
+      <h1>Blog</h1>
+    </section>
+
+    <!-- Add Blog Button -->
+    <div class="add-blog-container">
+      <button class="add-blog-btn" onclick="addBlog()">Add Blog</button>
+    </div>
+
+    <!-- Blog Content Section 1 -->
+    <section class="blog-content">
+      <h2>JavaScript Developers</h2>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus,
+        luctus nec ullamcorper mattis, pulvinar dapibus leo. Lorem ipsum dolor
+        sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec
+        ullamcorper mattis, pulvinar dapibus leo.
+      </p>
+    </section>
+
+    <!-- Additional Blog Sections -->
+    <section class="blog-content">
+      <h2>React for Beginners</h2>
+      <p>
+        React is a powerful JavaScript library used to build user interfaces. It
+        allows developers to build reusable components and manage the user
+        interface efficiently.
+      </p>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+      <div class="footer-container">
+        <div class="products">
+          <h3>Products</h3>
+          <ul>
+            <li><a href="#">Roller Chain Drives</a></li>
+            <li><a href="#">Gear Couplings</a></li>
+            <li><a href="#">Conveyor Chains</a></li>
+            <li><a href="#">Marine Bearings</a></li>
+            <li><a href="#">Savings Investments</a></li>
+          </ul>
+        </div>
+        <div class="features">
+          <h3>Features</h3>
+          <ul>
+            <li><a href="#">Enterprise</a></li>
+            <li><a href="#">Customer Service</a></li>
+            <li><a href="#">Media & Entertainment</a></li>
+            <li><a href="#">Product</a></li>
+            <li><a href="#">Marketing</a></li>
+            <li><a href="#">Analytics</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+      function addBlog() {
+        alert("Add Blog functionality to be implemented.");
+      }
+    </script>
+  </body>
+</html>

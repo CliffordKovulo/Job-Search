@@ -6,7 +6,7 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <!-- Font Awesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-eNf9Dv7S0xN4s/DX6jlf8ZKv4Lld8L1zL9/qW9bZQba+XT8CE+SNZxDjY0Z4Ol/x" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         /* Reset Styles */
         * {
@@ -158,11 +158,31 @@
 
         <!-- Salary Range -->
         <label for="salary">Salary Range</label>
-        <input type="text" id="salary" name="salary" placeholder="Enter salary range" required>
+        <input type="text" id="salary" name="salary" placeholder="Enter salary range (e.g., $50k - $70k)" required>
+
+        <!-- Salary Number -->
+        <label for="salaryNumber">Minimum Salary (Numeric)</label>
+        <input type="number" id="salaryNumber" name="salaryNumber" placeholder="Enter the minimum salary (e.g., 50000)" required>
 
         <!-- Job Description -->
         <label for="description">Job Description</label>
         <textarea id="description" name="description" placeholder="Enter the job description" required></textarea>
+
+        <!-- Job Responsibilities -->
+        <label for="responsibilities">Job Responsibilities</label>
+        <textarea id="responsibilities" name="responsibilities" placeholder="Enter the job responsibilities" required></textarea>
+
+        <!-- Skills and Abilities -->
+        <label for="skills">Skills and Abilities</label>
+        <textarea id="skills" name="skills" placeholder="Enter the skills and abilities (separate by commas)" required></textarea>
+
+        <!-- Education -->
+        <label for="education">Education Requirements</label>
+        <textarea id="education" name="education" placeholder="Enter the education requirements" required></textarea>
+
+        <!-- Benefits -->
+        <label for="benefits">Benefits</label>
+        <textarea id="benefits" name="benefits" placeholder="Enter the job benefits" required></textarea>
 
         <!-- Company Logo URL -->
         <label for="image">Company Logo URL</label>
@@ -179,9 +199,9 @@
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.4/firebase-app.js";
         import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/9.8.4/firebase-firestore.js";
 
-        // Your Firebase Configuration (replace placeholders with your actual config)
+        // Firebase configuration (maintained as per your request)
         const firebaseConfig = {
-            apiKey: "AIzaSyAK67Air...",  // Your Firebase API Key
+            apiKey: "AIzaSyAK67Air3N7AL5iyRkOXy-Oh6UnbwhyA14",
             authDomain: "job-searching-5a91e.firebaseapp.com",
             projectId: "job-searching-5a91e",
             storageBucket: "job-searching-5a91e.appspot.com",
@@ -208,8 +228,16 @@
             const experience = document.getElementById('experience').value;
             const gender = document.getElementById('gender').value;
             const salary = document.getElementById('salary').value.trim();
+            const salaryNumber = parseInt(document.getElementById('salaryNumber').value.trim(), 10);
             const description = document.getElementById('description').value.trim();
+            const responsibilities = document.getElementById('responsibilities').value.trim();
+            const skillsInput = document.getElementById('skills').value.trim();
+            const education = document.getElementById('education').value.trim();
+            const benefits = document.getElementById('benefits').value.trim();
             const image = document.getElementById('image').value.trim();
+
+            // Convert skills string to an array
+            const skills = skillsInput ? skillsInput.split(',').map(skill => skill.trim()) : [];
 
             try {
                 await addDoc(collection(db, 'jobs'), {
@@ -220,7 +248,12 @@
                     experience,
                     gender,
                     salary,
+                    salaryNumber,
                     description,
+                    responsibilities,
+                    skills,
+                    education,
+                    benefits,
                     image
                 });
                 messageDiv.style.color = 'green';
